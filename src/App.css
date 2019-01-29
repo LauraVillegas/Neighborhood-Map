@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+body{
+  overflow: hidden!important;
+}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -17,16 +20,77 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+#map{
+  position: absolute!important;
+  overflow: hidden!important;
+  height: 100%;
+  width: 100vw;
+}
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#root > div > header > div {
+  background-color: red;
+}
+
+#navbar {
+  background: blue;
+  position: relative;
+  z-index: 100;
+  box-shadow: 0px 1px 1px grey;
+
+}
+
+#sidebar {
+  position: absolute;
+  z-index: 100;
+  box-shadow: 0px 1px 1px grey;
+  background: #f2f2f2;
+  width: 350px;
+  max-width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  justify-content: center;
+  padding: 50px 20px;
+}
+
+#sidebar-inner {
+  padding: 10px;
+}
+.MuiFormControl-root-1 {
+  z-index: 999;
+  top:50px;
+  left: 10px;
+  margin: auto!important;
+}
+
+.marker-content{
+  width: 300px;
+  margin-top: 10px;
+  -webkit-box-shadow: 0px 21px 24px -2px rgba(0,0,0,0.48);
+  -moz-box-shadow: 0px 21px 24px -2px rgba(0,0,0,0.48);
+  box-shadow: 0px 21px 24px -2px rgba(0,0,0,0.48);
+  border: none!important; 
+}
+
+.small-font{
+  font-weight: 300;
+  font-size: 14px;
+}
+.medium-font{
+  font-weight: bold;
+  font-size: 16px;
+}
+
+div.gm-style-iw {
+  width: 300px!important;
+  margin:10px;
+}
+.marker-info{
+  padding: 10px!important;
+}
+.title{
+  font-size: 20px;
 }
