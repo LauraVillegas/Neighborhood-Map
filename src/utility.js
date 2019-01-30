@@ -5,10 +5,14 @@ export function load_google_maps() {
         resolve(window.google);
         delete window.resolveGoogleMapsPromise;
       }
+      window.gm_authFailure = function () {
+        alert('Google maps API Failed to load, please check');
+      };
       // Now, Load the Google Maps API
       const script = document.createElement("script");
       const API_KEY = 'AIzaSyDXBoXO0kTzybJGECtKZJoBqPfYld_8SUk';
       script.src = `https://maps.googleapis.com/maps/api/js?libraries=places&key=${API_KEY}&callback=resolveGoogleMapsPromise`;
+      script.onerror = window.gm_authFailure;
       script.async = true;
       document.body.appendChild(script);
     });

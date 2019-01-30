@@ -21,11 +21,11 @@ render() {
         <div>
         {this.props.venues && this.props.venues.length > 0 && this.props.venues.map((venue, index) =>
             (
-                <Card className="marker-content p-1" key={venue.id} onClick={() => { this.props.card_click(venue) }}>
-                <CardImg top width="100%" src={get_view(venue.location.lat, venue.location.lng)} alt="Card image cap" />
+                <Card tabIndex="0" aria-labelledby="title" className="marker-content p-1" key={venue.id} onClick={() => { this.props.card_click(venue) }}>
+                <CardImg top width="100%" src={get_view(venue.location.lat, venue.location.lng)} alt={'image for ' + venue.name}/>
                 <CardBody  >
-                  <CardTitle className="medium-font font-weight-bold">{venue.name}</CardTitle>
-                  <CardText>{venue.location.formattedAddress.join(', ')}</CardText>
+                  <CardTitle id="title" className="medium-font font-weight-bold">{venue.name}</CardTitle>
+                  <CardText > {venue.location.formattedAddress.join(', ')}</CardText>
                 </CardBody>
               </Card>
              

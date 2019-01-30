@@ -7,8 +7,8 @@ export default class Toolbar extends React.Component {
     return (
       <div>
         <Navbar color="danger" dark>
-          <NavbarBrand href="/" className="mr-auto">Seattle's Restaurant Finder</NavbarBrand>
-          <NavbarToggler onClick={this.props.close} className="mr-2" />
+          <NavbarBrand href="/" className="mr-auto" tabIndex="1">Seattle's Restaurant Finder</NavbarBrand>
+          <NavbarToggler role="button" aria-pressed="false" tabIndex="0" onClick={this.props.close} className="mr-2" />
         </Navbar>
       </div>
     );

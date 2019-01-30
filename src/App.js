@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import { load_google_maps, load_sites, get_view } from './utility'
-import { If, Card, CardBody, CardTitle, CardText, CardImg, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import Toolbar from './Toolbar'
 import Sidebar from './components/Sidebar'
 
@@ -32,7 +31,6 @@ class App extends Component {
         center: { lat: this.venues[0].location.lat, lng: this.venues[0].location.lng }
       });
       this.venues.forEach(venue => {
-        console.log(venue);
         venue.image = get_view(venue.location.lat, venue.location.lng);
         let marker = new google.maps.Marker({
           position: {lat: venue.location.lat, lng: venue.location.lng },
@@ -44,7 +42,7 @@ class App extends Component {
           image: venue.image,
           address: venue.location.formattedAddress.join(', ')
         });
-        let markerContent = `<div class="marker-content card p-1"><img width="100%" src='${venue.image}'/><div class="card-body marker-info"><div class="card-title"><h3 class="medium-font">${marker.name}</h3><h5 class="font-weight-bold"></h5></div><div class="card-text"><p class="small-font">${marker.address}</p></div></div></div>`;
+        let markerContent = `<div class="marker-content card p-1"><img width="100%" alt=${marker.name} src='${venue.image}'/><div class="card-body marker-info"><div class="card-title"><h3 class="medium-font">${marker.name}</h3><h5 class="font-weight-bold"></h5></div><div class="card-text"><p class="small-font">${marker.address}</p></div></div></div>`;
 
         marker.addListener('click', () => {
           if (marker.getAnimation() !== null) { marker.setAnimation(null); }
@@ -63,9 +61,7 @@ class App extends Component {
         this.infoWindows.push({ name: venue.name, contents: markerContent, id: venue.id, });
       });
       this.setState({ venuesFiltered: this.venues, sidebarOpen: true })
-      console.log(this.state.venuesFiltered);
     }).catch(error => {
-      console.log(error);
       alert("Oops.. This page isn't loading so well right now")
     })
   }
@@ -82,7 +78,6 @@ class App extends Component {
         sidebarOpen: !this.state.sidebarOpen
         
       });
-      console.log('toggled');
     }
 
     card_click = (venue) => {
@@ -110,14 +105,14 @@ render() {
     return (
       <div>
       <main>
-      <div  aria-label="Map"
+      <div  aria-label="Map"                    
       role="application" id="map">
       </div>
-      <Toolbar close={this.toggleSideBar}/>
+      <Toolbar tabIndex="1" close={this.toggleSideBar}/>
       </main>
       <aside>
         {this.state.sidebarOpen === true &&
-        <Sidebar card_click={this.card_click} venues={this.state.venuesFiltered} changeQuery={this.changeQuery} query={this.state.query}/>
+        <Sidebar tabIndex="0" ard_click={this.card_click} venues={this.state.venuesFiltered} changeQuery={this.changeQuery} query={this.state.query}/>
         }
       </aside>
       </div>
